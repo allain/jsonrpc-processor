@@ -21,6 +21,15 @@ test('performs simple single invocation', function (t) {
   });
 });
 
+test('binds to third param', function(t) {
+  var binding = {};
+  return jsonRpcProcess({jsonrpc: '2.0', method: 'testBind', params: [], 'id': 1}, {
+    testBind: function (val) {
+      t.ok(this === binding);
+    }
+  }, binding);
+});
+
 test('performs simple single invocation that returns a promise', function (t) {
   return jsonRpcProcess({jsonrpc: '2.0', method: 'echo', params: ['bar'], 'id': 1}, {
     echo: function (val) {

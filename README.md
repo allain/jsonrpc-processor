@@ -70,13 +70,16 @@ process([
 
 ## API
 
-### process(invocation, methods) => Promise
+### process(invocation, methods[, context]) => Promise
 
 #### invocation
 is one or more jsonrpc requests or notifications
 
 #### methods
 an object where the keys are the method names and the values are the functions to invoke.
+
+#### context
+object to bind `this` while invoking methods
 
 #### returns
 a Promise which resolves into a Response object, undefined, or an array of Response objects for the case of a Single Request, a Notification, or an array of one or more Requests or notifications respectively. 

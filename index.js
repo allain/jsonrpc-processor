@@ -7,7 +7,7 @@ var JsonRpcError = protocol.JsonRpcError;
 var InvalidRequest = protocol.InvalidRequest;
 var MethodNotFound = protocol.MehtodNotFound;
 
-module.exports = function(src, procedures) {
+module.exports = function(src, procedures, context) {
   var invocations = protocol.parse(src);
 
   var batch = Array.isArray(invocations);
@@ -25,7 +25,7 @@ module.exports = function(src, procedures) {
 
     var result;
     try {
-      result = Promise.resolve(procedure.apply(null, invocation.params || []));
+      result = Promise.resolve(procedure.apply(context, invocation.params || []));
     } catch(e) {
       result = Promise.reject(e);
     }
