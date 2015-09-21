@@ -1,0 +1,31 @@
+{
+  "name": "jsonrpc-processor",
+  "version": "0.1.0",
+  "description": "Core of a json-rpc 1 and 2 engine I intend to expose over various transport protocols",
+  "main": "index.js",
+  "scripts": {
+    "test": "faucet test/*.js",
+    "lint": "jshint --config .jshintrc index.js test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allain/jsonrpc2-processor.git"
+  },
+  "keywords": [
+    "jsonrpc2",
+    "processor"
+  ],
+  "author": "Allain Lalonde <allain.lalonde@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allain/jsonrpc2-processor/issues"
+  },
+  "homepage": "https://github.com/allain/jsonrpc2-processor#readme",
+  "dependencies": {
+    "bluebird": "^2.10.0",
+    "json-rpc-protocol": "^0.10.0"
+  },
+  "devDependencies": {
+    "blue-tape": "^0.1.10"
+  }
+}
