@@ -2,6 +2,7 @@ var Promise = require('bluebird');
 
 var protocol = require('json-rpc-protocol');
 
+var parse = protocol.parse;
 var format = protocol.format;
 var JsonRpcError = protocol.JsonRpcError;
 var InvalidRequest = protocol.InvalidRequest;
@@ -13,9 +14,14 @@ module.exports = function(src, procedures, context) {
   var batch = Array.isArray(invocations);
 
   return Promise.map([].concat(invocations), function(invocation) {
+    if (invocation.result) {
+      // Ignore responses
+      return;
+    }
+
     var method = invocation.method;
     if (!method) {
-      return error(invocation.id, new InvalidRequest());
+      return error(invocation.id, new InvalidRequest('no method'));
     }
 
     var procedure = procedures[method];

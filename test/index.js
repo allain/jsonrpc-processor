@@ -75,6 +75,12 @@ test('handles thrown exceptions', function (t) {
   });
 });
 
+test('ignores anything that is not a request or notification', function(t) {
+  return jsonRpcProcess({jsonrpc: '2.0', 'result': 1, id: 1}, {}).then(function(result) {
+    t.deepEqual(result, undefined);
+  });
+});
+
 test('performs simple invocations as array', function (t) {
   return jsonRpcProcess('[{"jsonrpc":"2.0", "method": "echo", "params": [1], "id": 1},{"jsonrpc":"2.0", "method": "echo", "params": [2], "id": 2}]', {
     echo: function (val) {
