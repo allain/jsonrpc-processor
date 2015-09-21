@@ -1,6 +1,6 @@
 {
   "name": "jsonrpc-processor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Core of a json-rpc 1 and 2 engine I intend to expose over various transport protocols",
   "main": "index.js",
   "scripts": {
